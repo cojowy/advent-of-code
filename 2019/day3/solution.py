@@ -1,6 +1,22 @@
 import copy
 from matplotlib import pyplot as plt
 
+def fill_in_gaps(points, coords):
+    if len(points) > 0:
+        startX, startY = points[-1][0], points[-1][1]
+    else:
+        startX, startY = 0,0
+    endX, endY = coords[0], coords[1]
+    new_points = []
+    for i in range(startX, endX, 1 if endX > startX else -1):
+        if (i, startY) != (startX, startY) or (startX, startY) == (0, 0):
+            new_points.append((i, startY)) 
+    for i in range(startY, endY, 1 if endY > startY else -1):
+        if (startX, i) != (startX, startY) or (startX, startY) == (0, 0):
+            new_points.append((startX, i))
+    new_points.append(copy.deepcopy(coords))
+    return new_points
+
 def path_points(path):
     coords = [0,0]
     points = []
@@ -14,20 +30,19 @@ def path_points(path):
             coords[1] += steps
         elif direction == 'D':
             coords[1] -= steps
-        points.append(copy.deepcopy(coords))
+        points += fill_in_gaps(points, tuple(coords))
     return points
+
+def mhd(p1, p2):
+    return abs(p1[0] - p2[0]) + abs(p1[1] - p2[1])
 
 with open('input', 'r') as f:
     input = [l.split(',') for l in [s.strip('\n') for s in f.readlines()]]
 
 path1_points = path_points(input[0])
-p1x = [p[0] for p in path1_points]
-p1y = [p[1] for p in path1_points]
-
 path2_points = path_points(input[1])
-p2x = [p[0] for p in path2_points]
-p2y = [p[1] for p in path2_points]
+common_points = list(set(path1_points).intersection(path2_points))
+common_points.remove((0,0))
 
-plt.plot(p1x, p1y)
-plt.plot(p2x, p2y)
-plt.show() # calculate distance on graph - point (527, -100), manhattan dist = 627
+print("Minimum manhattan distance:",min([mhd([0,0], p) for p in common_points]))
+print("Minimum steps taken:", min([path1_points.index(p) + path2_points.index(p) for p in common_points]))
