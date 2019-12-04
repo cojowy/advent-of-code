@@ -1,5 +1,4 @@
 import copy
-from matplotlib import pyplot as plt
 
 def fill_in_gaps(points, coords):
     if len(points) > 0:
