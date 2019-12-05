@@ -9,8 +9,6 @@ def compute(myinput):
             myinput[pos] = val1 + val2
         elif operation == 2:
             myinput[pos] = val1*val2
-        else:
-            raise 'error'
         i += 4
         operation = myinput[i]
     return myinput
