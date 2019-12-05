@@ -30,6 +30,38 @@ class Computer:
             elif operation_params[3] == 0 and operation_params[4] == 4: # print value at position
                 print(self.data[self.data[i+1]])
                 i += 2
+            elif operation_params[3] == 0 and operation_params[4] == 5: # jump if true
+                val1 = self.data[i+1] if operation_params[2] == 1 else self.data[self.data[i+1]]
+                val2 = self.data[i+2] if operation_params[1] == 1 else self.data[self.data[i+2]]
+                if val1 != 0:
+                    i = val2
+                else:
+                    i += 3
+            elif operation_params[3] == 0 and operation_params[4] == 6: # jump if false
+                val1 = self.data[i+1] if operation_params[2] == 1 else self.data[self.data[i+1]]
+                val2 = self.data[i+2] if operation_params[1] == 1 else self.data[self.data[i+2]]
+                if val1 == 0:
+                    i = val2
+                else:
+                    i += 3
+            elif operation_params[3] == 0 and operation_params[4] == 7: # less than
+                val1 = self.data[i+1] if operation_params[2] == 1 else self.data[self.data[i+1]]
+                val2 = self.data[i+2] if operation_params[1] == 1 else self.data[self.data[i+2]]
+                position = self.data[i+3]
+                if val1 < val2:
+                    self.data[position] = 1
+                else:
+                    self.data[position] = 0
+                i += 4
+            elif operation_params[3] == 0 and operation_params[4] == 8: # equal to
+                val1 = self.data[i+1] if operation_params[2] == 1 else self.data[self.data[i+1]]
+                val2 = self.data[i+2] if operation_params[1] == 1 else self.data[self.data[i+2]]
+                position = self.data[i+3]
+                if val1 == val2:
+                    self.data[position] = 1
+                else:
+                    self.data[position] = 0
+                i += 4
             operation_params = self.parse_operation(self.data[i])
 
 with open('input', 'r') as f:
