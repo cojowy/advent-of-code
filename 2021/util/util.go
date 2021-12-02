@@ -26,6 +26,22 @@ func ReadInts(path string) ([]int, error) {
 	return numbers, scanner.Err()
 }
 
+// ReadStrings reads lines from a file into a []string
+func ReadStrings(path string) ([]string, error) {
+	file, err := os.Open(path)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+
+	var lines []string
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		lines = append(lines, scanner.Text())
+	}
+	return lines, scanner.Err()
+}
+
 func Sum(in []int) int {
 	sum := in[0]
 	for _, num := range in[1:] {
