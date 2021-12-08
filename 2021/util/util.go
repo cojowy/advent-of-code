@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"os"
 	"strconv"
+	"strings"
 )
 
 // ReadInts reads newline-separated integers from a file into an []int
@@ -95,6 +96,16 @@ func IntSliceToNumString(in []int) string {
 		result += strconv.Itoa(num)
 	}
 	return result
+}
+
+// NumStringToIntSlice converts a comma-separated list of ints to an []int
+func NumStringToIntSlice(in string) []int {
+	var nums []int
+	for _, rawNum := range strings.Split(in, ",") {
+		num, _ := strconv.Atoi(rawNum)
+		nums = append(nums, num)
+	}
+	return nums
 }
 
 // IntCounts returns {int: frequency count} for []int

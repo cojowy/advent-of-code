@@ -1,12 +1,9 @@
 package solutions
 
-import (
-	"strconv"
-	"strings"
-)
+import "aoc-2021/util"
 
 func Day6(in string, numDays int) int {
-	timers := parseDay6Input(in)
+	timers := util.NumStringToIntSlice(in)
 	return simulate(timers, numDays)
 }
 
@@ -38,13 +35,4 @@ func newTimerCounts() map[int]int {
 		timerCounts[timerValue] = 0
 	}
 	return timerCounts
-}
-
-func parseDay6Input(input string) []int {
-	var nums []int
-	for _, rawNum := range strings.Split(input, ",") {
-		num, _ := strconv.Atoi(rawNum)
-		nums = append(nums, num)
-	}
-	return nums
 }
