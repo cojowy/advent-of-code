@@ -19,8 +19,8 @@ func Day3Part1(input [][]int) (int, error) {
 }
 
 func Day3Part2(input [][]int) (int, error) {
-	ogr := util.IntSliceToNumString(oxygenGeneratorRatingValue(input, 0))
-	csr := util.IntSliceToNumString(co2ScrubberRatingValue(input, 0))
+	ogr := util.IntSliceToNumString(oxygenGeneratorRatingValue(input, 0), "")
+	csr := util.IntSliceToNumString(co2ScrubberRatingValue(input, 0), "")
 
 	ogrDecimal, err := strconv.ParseInt(ogr, 2, 64)
 	if err != nil {

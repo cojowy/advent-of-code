@@ -90,12 +90,12 @@ func Transpose(input [][]int) [][]int {
 }
 
 // IntSliceToNumString converts a []int to string
-func IntSliceToNumString(in []int) string {
+func IntSliceToNumString(in []int, sep string) string {
 	var result string
 	for _, num := range in {
-		result += strconv.Itoa(num)
+		result += strconv.Itoa(num) + sep
 	}
-	return result
+	return strings.TrimSuffix(result, sep)
 }
 
 // NumStringToIntSlice converts a comma-separated list of ints to an []int
