@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	day9()
+	day10()
 }
 
 func day1() {
@@ -110,4 +110,13 @@ func day9() {
 	}
 	fmt.Printf("Day 9 Part 1: %d\n", solutions.Day9Part1(input))
 	fmt.Printf("Day 9 Part 2: %d\n", solutions.Day9Part2(input))
+}
+
+func day10() {
+	input, err := util.ReadStrings("inputs/day10")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("Day 10 Part 1: %d\n", solutions.Day10Part1(input))
+	fmt.Printf("Day 10 Part 2: %d\n", solutions.Day10Part2(input))
 }
