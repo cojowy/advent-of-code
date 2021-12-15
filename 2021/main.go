@@ -6,10 +6,6 @@ import (
 	"fmt"
 )
 
-func main() {
-	day11()
-}
-
 func day1() {
 	numbers, err := util.ReadInts("inputs/day1")
 	if err != nil {
@@ -133,4 +129,17 @@ func day11() {
 		panic(err)
 	}
 	fmt.Printf("Day 11 Part 2: %d\n", solutions.Day11Part2(input2))
+}
+
+func day12() {
+	input, err := util.ReadStrings("inputs/day12")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("Day 12 Part 1: %d\n", solutions.Day12Part1(input))
+	fmt.Printf("Day 12 Part 1: %d\n", solutions.Day12Part2(input))
+}
+
+func main() {
+	day12()
 }
