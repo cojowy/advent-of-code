@@ -37,7 +37,7 @@ func Day9Part2(numbers [][]int) int {
 	basinSizes := []int{}
 	for _, p := range lowPoints {
 		basinCoords := grid.findBasinCoordinates(p)
-		basinCoords = removeDuplicates(basinCoords)
+		basinCoords = util.RemoveDuplicates(basinCoords)
 		basinSizes = append(basinSizes, len(basinCoords))
 	}
 	sort.Sort(sort.Reverse(sort.IntSlice(basinSizes)))
@@ -117,16 +117,4 @@ func (g *grid) removeNines(points [][]int) [][]int {
 		}
 	}
 	return newPoints
-}
-
-func removeDuplicates(input [][]int) [][]int {
-	result := [][]int{}
-	uniques := map[string]string{}
-	for _, in := range input {
-		if _, ok := uniques[util.IntSliceToNumString(in, ",")]; !ok {
-			uniques[util.IntSliceToNumString(in, ",")] = ""
-			result = append(result, in)
-		}
-	}
-	return result
 }

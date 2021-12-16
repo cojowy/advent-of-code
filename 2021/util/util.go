@@ -120,3 +120,15 @@ func IntCounts(in []int) map[int]int {
 	}
 	return elemCounts
 }
+
+func RemoveDuplicates(input [][]int) [][]int {
+	result := [][]int{}
+	uniques := map[string]string{}
+	for _, in := range input {
+		if _, ok := uniques[IntSliceToNumString(in, ",")]; !ok {
+			uniques[IntSliceToNumString(in, ",")] = ""
+			result = append(result, in)
+		}
+	}
+	return result
+}
