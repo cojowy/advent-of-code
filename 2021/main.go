@@ -150,6 +150,15 @@ func day13() {
 	solutions.Day13Part2(input)
 }
 
+func day14() {
+	input, err := util.ReadStrings("inputs/day14")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("Day 14 Part 1: %d\n", solutions.Day14(input, 10))
+	fmt.Printf("Day 14 Part 1: %d\n", solutions.Day14(input, 40))
+}
+
 func main() {
-	day13()
+	day14()
 }
