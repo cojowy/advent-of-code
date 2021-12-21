@@ -159,6 +159,15 @@ func day14() {
 	fmt.Printf("Day 14 Part 1: %d\n", solutions.Day14(input, 40))
 }
 
+func day15() {
+	input, err := util.ReadIntSlices("inputs/day15")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("Day 15 Part 1: %d\n", solutions.Day15Part1(input))
+	fmt.Printf("Day 15 Part 2: %d\n", solutions.Day15Part2(input, 5))
+}
+
 func main() {
-	day14()
+	day15()
 }
